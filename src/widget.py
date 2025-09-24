@@ -21,7 +21,3 @@ def get_date(date_input: str) -> str:
     list_input = date_input.split("T")
     list_date = list_input[0].split("-")
     return ".".join(list_date[::-1])
-
-
-print(mask_account_card("Счет 35383033474447895560"))
-print(get_date("2024-03-11T02:26:18.671407"))
