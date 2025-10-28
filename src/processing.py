@@ -4,12 +4,11 @@ def filter_by_state(bank_operation: list[dict], state: str = "EXECUTED") -> list
     Возвращает новый список словарей, содержащий только те словари,
     у которых ключ state соответствует указанному значению."""
 
-    transaction_filter = []
-    if not bank_operation:
-        return []
-    for transaction in bank_operation:
-        if transaction["state"] == state:
-            transaction_filter.append(transaction)
+    if isinstance(state, str):
+        state = state.upper()
+
+    transaction_filter = [transaction for transaction in bank_operation if isinstance(transaction, dict) and transaction.get("state") == state]
+
     return transaction_filter
 
 
