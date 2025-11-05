@@ -17,7 +17,6 @@ def mask_account_card(card_type_num: str) -> str:
 
 def get_date(date_input: str) -> str:
     """Вывод даты в корректном формате"""
-
     list_input = date_input.split("T")
     list_date = list_input[0].split("-")
     return ".".join(list_date[::-1])
