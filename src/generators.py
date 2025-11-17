@@ -11,7 +11,6 @@ def filter_by_currency(transactions: list[dict], currency: str) -> dict:
                 yield transaction
 
 
-
 def transaction_descriptions(transactions: list[dict]) -> Generator[str, None, None]:
     """Принимает список словарей с транзакциями и
     возвращает описание каждой операции по очереди"""
@@ -24,7 +23,6 @@ def transaction_descriptions(transactions: list[dict]) -> Generator[str, None, N
             description = transaction.get("description")
             if description is not None:
                 yield description
-
 
 
 def card_number_generator(start: int, end: int) -> str:
@@ -55,9 +53,3 @@ def card_number_generator(start: int, end: int) -> str:
         num_4 = current % 10000
         yield f"{num_1:04d} {num_2:04d} {num_3:04d} {num_4:04d}"
         current += 1
-
-############################################################################################
-
-
-for card_number in card_number_generator(1, 3):
-    print(card_number)

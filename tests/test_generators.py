@@ -1,6 +1,6 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(test_data, test_data_USD):
@@ -19,11 +19,13 @@ def test_filter_by_currency_empty(test_data_description):
     assert list(filter_by_currency([], "")) == []
     assert list(filter_by_currency(test_data_description, "")) == []
 
+
 def test_transaction_descriptions(test_data):
     """Тест ожидаемых значений"""
 
-    assert list(transaction_descriptions(test_data)) == ["Перевод организации",
-    "Перевод со счета на счет", "Перевод со счета на счет", "Перевод с карты на карту", "Перевод организации"]
+    assert list(transaction_descriptions(test_data)) == [
+        "Перевод организации", "Перевод со счета на счет",
+        "Перевод со счета на счет", "Перевод с карты на карту", "Перевод организации"]
 
 
 def test_transaction_descriptions_empty_list(test_data_description):
@@ -31,7 +33,6 @@ def test_transaction_descriptions_empty_list(test_data_description):
 
     assert list(transaction_descriptions([])) == []
     assert list(transaction_descriptions(test_data_description)) == ["test1", "test3"]
-
 
 
 def test_card_number_generator_boundaries():
