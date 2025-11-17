@@ -25,28 +25,28 @@ def transaction_descriptions(transactions: list[dict]) -> Generator[str, None, N
                 yield description
 
 
-def card_number_generator(start: int, end: int) -> str:
+def card_number_generator(start: int, stop: int) -> str:
     """Генератор выдает номера банковских карт в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты,
      в заданном диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999.
     Генератор должен принимать начальное и конечное значения для генерации диапазона номеров."""
 
     try:
         start = int(start)
-        end = int(end)
+        stop = int(stop)
     except (ValueError, TypeError) as e:
-        raise TypeError(f"start и end должны быть числами: {e}")
+        raise TypeError(f"start и stop должны быть числами: {e}")
 
     if not (1 <= start <= 9999999999999999):
         raise ValueError(f"start должен быть от 1 до 9999999999999999, получено {start}")
 
-    if not (1 <= end <= 9999999999999999):
-        raise ValueError(f"end должен быть от 1 до 9999999999999999, получено {end}")
+    if not (1 <= stop <= 9999999999999999):
+        raise ValueError(f"stop должен быть от 1 до 9999999999999999, получено {stop}")
 
-    if start > end:
-        raise ValueError(f"start ({start}) не может быть больше end ({end})")
+    if start > stop:
+        raise ValueError(f"start ({start}) не может быть больше stop ({stop})")
 
     current = start
-    while current <= end:
+    while current <= stop:
         num_1 = current // 1000000000000
         num_2 = (current // 100000000) % 10000
         num_3 = (current // 10000) % 10000

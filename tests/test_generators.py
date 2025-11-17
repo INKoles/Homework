@@ -52,11 +52,11 @@ def test_card_number_generator_errors():
     with pytest.raises(ValueError, match="start должен быть от 1"):
         list(card_number_generator(0, 5))
 
-    # end > 9999999999999999
-    with pytest.raises(ValueError, match="end должен быть.*до 9999999999999999"):
+    # stop > 9999999999999999
+    with pytest.raises(ValueError, match="stop должен быть.*до 9999999999999999"):
         list(card_number_generator(9999999999999999, 10000000000000000))
 
-    # start > end
+    # start > stop
     with pytest.raises(ValueError, match="start.*не может быть больше"):
         list(card_number_generator(10, 5))
 
