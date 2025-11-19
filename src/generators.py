@@ -1,7 +1,7 @@
-from typing import Generator
+from typing import Generator, Iterator
 
 
-def filter_by_currency(transactions: list[dict], currency: str) -> dict:
+def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[dict]:
     """Принимает на вход список словарей (транзакции), возвращает итератор, который поочередно
     выдает транзакции, где валюта операции соответствует заданной (например, USD)"""
 
@@ -25,7 +25,7 @@ def transaction_descriptions(transactions: list[dict]) -> Generator[str, None, N
                 yield description
 
 
-def card_number_generator(start: int, stop: int) -> str:
+def card_number_generator(start: int, stop: int) -> Generator[str, None, None]:
     """Генератор выдает номера банковских карт в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты,
      в заданном диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999.
     Генератор должен принимать начальное и конечное значения для генерации диапазона номеров."""
